@@ -1,0 +1,22 @@
+{
+  "name": "disable-aws-outputs",
+  "version": "1.0.0",
+  "description": "Serverless plugin to disable default aws outputs from sls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "url": "https://github.com/hugoviktor/disable-aws-outputs.git",
+    "type": "git"
+  },
+  "keywords": [
+    "serverless",
+    "node",
+    "aws",
+    "outputs",
+    "exports"
+  ],
+  "author": "",
+  "license": "MIT"
+}
