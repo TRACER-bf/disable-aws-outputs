@@ -8,12 +8,12 @@ Serverless plugin to disable default aws outputs from sls
 
 Install the plugin to your project:
 
-    npm install disable-aws-outputs --save
+    npm install serverless-disable-aws-outputs --save
 
 Add the plugin and its configuration to your serverless project:
 
     plugins:
-      - disable-aws-outputs
+      - serverless-disable-aws-outputs
 
 
 ### Output to be removed

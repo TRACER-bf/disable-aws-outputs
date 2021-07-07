@@ -1,5 +1,5 @@
 {
-  "name": "disable-aws-outputs",
+  "name": "serverless-disable-aws-outputs",
   "version": "1.0.0",
   "description": "Serverless plugin to disable default aws outputs from sls",
   "main": "index.js",
