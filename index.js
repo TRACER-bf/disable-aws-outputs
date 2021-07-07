@@ -15,10 +15,7 @@ class DisableOutputs {
 
     disableOutputs() {
         const cfnTemplate = this.serverless.service.provider.compiledCloudFormationTemplate
-        console.log(cfnTemplate["Outputs"])
-        console.log("Disabling Outputs")
-
-        delete cfnTemplate["Outputs"]
+        cfnTemplate["Outputs"] = {}
     }
 
 
