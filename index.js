@@ -18,7 +18,7 @@ class DisableOutputs {
 
     const retainedOutputRegex =
       this.serverless.service.custom?.retainedOutputRegex;
-    if (retainedOutputRegex) {
+    if (!retainedOutputRegex) {
       cfnTemplate["Outputs"] = {};
       return;
     }
