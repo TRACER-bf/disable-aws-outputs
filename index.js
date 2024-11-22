@@ -1,5 +1,9 @@
+const ref = {};
+
 class DisableOutputs {
   constructor(serverless, options) {
+    const self = this;
+    ref.self = self;
     this.serverless = serverless;
     this.service = serverless.service;
     this.hooks = {
@@ -12,15 +16,23 @@ class DisableOutputs {
       this.serverless.service.provider.compiledCloudFormationTemplate;
     if (!cfnTemplate["Outputs"]) return;
 
-    const retainedOutputs =
-      this.serverless.service.custom?.retainedOutputs || [];
+    const retainedOutputRegex =
+      this.serverless.service.custom?.retainedOutputRegex;
+    if (retainedOutputRegex) {
+      cfnTemplate["Outputs"] = {};
+      return;
+    }
+
+    console.log(`retainedOutputRegex = ${retainedOutputRegex}`);
 
     Object.keys(cfnTemplate["Outputs"]).forEach((outputKey) => {
-      if (retainedOutputs.includes(outputKey)) {
+      const shouldRetain = new RegExp(retainedOutputRegex).test(outputKey);
+
+      if (shouldRetain) {
         console.log(`${outputKey} is retained.`);
-        return;
+      } else {
+        delete cfnTemplate["Outputs"][outputKey];
       }
-      delete cfnTemplate["Outputs"][outputKey];
     });
   }
 }
