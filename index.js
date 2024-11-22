@@ -16,7 +16,10 @@ class DisableOutputs {
       this.serverless.service.custom?.retainedOutputs || [];
 
     Object.keys(cfnTemplate["Outputs"]).forEach((outputKey) => {
-      if (retainedOutputs.includes(outputKey)) return;
+      if (retainedOutputs.includes(outputKey)) {
+        console.log(`${outputKey} is retained.`);
+        return;
+      }
       delete cfnTemplate["Outputs"][outputKey];
     });
   }
