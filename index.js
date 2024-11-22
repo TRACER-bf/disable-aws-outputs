@@ -29,7 +29,7 @@ class DisableOutputs {
       const shouldRetain = new RegExp(retainedOutputRegex).test(outputKey);
 
       if (shouldRetain) {
-        console.log(`${outputKey} is retained.`);
+        console.log(`Retain ${outputKey}`);
       } else {
         delete cfnTemplate["Outputs"][outputKey];
       }
